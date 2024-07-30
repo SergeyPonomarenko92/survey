@@ -4,6 +4,7 @@ use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable(__DIR__ . '../../');
 $dotenv->load();
+session_start();
 define('APP_ROOT', dirname(dirname(__FILE__)));
 define('URL_ROOT', '/');
 define('URL_SUBFOLDER', '');
@@ -19,7 +20,6 @@ $port = $_ENV['DB_PORT'];
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;port=$port", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "connection success";
 } catch (PDOException $e) {
     die("conection failed " . $e->getMessage());
 }

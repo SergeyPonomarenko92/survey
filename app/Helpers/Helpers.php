@@ -1,5 +1,6 @@
 <?php
 
+use \Symfony\Component\HttpFoundation\Request;
 //to check incoming parameters for expected field names and remove unexpected
 function load(array $fillable, $request )
 {
@@ -16,16 +17,16 @@ function load(array $fillable, $request )
 
 function check_required_fields(array $data ):true|array
 {
-
     $errors = [];
     foreach ($data as $key => $value) {
         if (empty($value)) {
-            $errors = "The field {$key} is required";
+            $errors[] = "The field {$key} is required";
         }
     }
-    if (!empty($errors)) {
+    if (!$errors) {
         return true;
     }
+
     return $errors;
 }
 
@@ -35,8 +36,18 @@ function h($string):string
     return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
 }
 
-function old(string $name, $request):string
+
+function print_alerts( $errors ):string
+{
+    $html = '<ul class="list-unstyled">';
+    foreach ($errors as $error) {
+        $html =  "<li> . $error . </li>";
+    }
+    $html .= '</ul>';
+    return $html;
+}
+
+function get_alerts()
 {
 
-    return isset($load_data[$name]) ? h($request[$name]) : '';
 }

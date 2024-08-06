@@ -11,6 +11,7 @@ use Symfony\Component\Routing\Exception\MethodNotAllowedException;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Exception\NoConfigurationException;
 
+
 //класс который позволяет прокинуть контроллер в роут.
 
 class Router
@@ -28,22 +29,22 @@ class Router
             $matcher = $matcher->match($arrayUri[0]);
 
             // Cast params to int if numeric
-            array_walk($matcher, function(&$param)
-            {
-                if(is_numeric($param))
-                {
-                    $param = (int) $param;
+            array_walk(
+                $matcher, function (&$param) {
+                    if(is_numeric($param)) {
+                        $param = (int) $param;
+                    }
                 }
-            });
+            );
 
             $className = '\\App\\Controllers\\' . $matcher['controller'];
-            dump($className);
 
             $classInstance = new $className();
 
             $request = Request::createFromGlobals();
             // Add routes and request as parameters to the next class
-            $params = array_merge(array_slice($matcher, 2, -1),
+            $params = array_merge(
+                array_slice($matcher, 2, -1),
                 array(
                     'routes' => $routes,
                     'request' => $request ?? null,
@@ -52,7 +53,7 @@ class Router
             if (isset($matcher['id'])) {
                 $params['id'] = $matcher['id'];
             }
-          call_user_func_array(array($classInstance, $matcher['method']), $params);
+            call_user_func_array(array($classInstance, $matcher['method']), $params);
 
         } catch (MethodNotAllowedException $e) {
             echo 'Route method is not allowed.';
@@ -61,6 +62,8 @@ class Router
         } catch (NoConfigurationException $e) {
             echo 'Configuration does not exists.';
         }
+
+
     }
 }
 

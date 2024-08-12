@@ -7,10 +7,6 @@ require_once APP_ROOT . '/public/layout/Header.php'; ?>
             <h1> <?php echo $form_title ?> </h1>
             <form action="" method="post">
                 <div class="form-floating mb-3">
-                    <input type="text" name="name" class="form-control" id="nameInput" >
-                    <label for="nameInput">Your name</label>
-                </div>
-                <div class="form-floating mb-3">
                     <input type="email" name="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
                     <label for="floatingEmail">Email address</label>
                 </div>
@@ -19,7 +15,7 @@ require_once APP_ROOT . '/public/layout/Header.php'; ?>
                     <label for="floatingPassword">Password</label>
                 </div>
                 <button type="submit" class="btn btn-primary">
-                    Register
+                    Login
                 </button>
             </form>
 

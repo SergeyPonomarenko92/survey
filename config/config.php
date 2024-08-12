@@ -2,6 +2,10 @@
 
 use Dotenv\Dotenv;
 
+if (version_compare(phpversion(), '8.2.0', '<')) {
+    exit('Check PHP version, please. PHP 8.2+ Required');
+}
+
 $dotenv = Dotenv::createImmutable(__DIR__ . '../../');
 $dotenv->load();
 session_start();
@@ -18,8 +22,10 @@ $port = $_ENV['DB_PORT'];
 
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;port=$port", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    global $db;
+    $db = new PDO("mysql:host=$host;dbname=$dbname;port=$port", $username, $password);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     die("conection failed " . $e->getMessage());
 }
+

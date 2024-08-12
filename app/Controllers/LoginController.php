@@ -11,24 +11,25 @@ use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\Routing\Generator\UrlGenerator;
 
 
-class RegisterController
+class LoginController
 {
     public function index(RouteCollection $routes, ?Request $request): void
     {
         $requestContext = new RequestContext();
         $requestContext = $requestContext->fromRequest($request);
-        $title = "Register page";
-        $form_title = "Register form";
-        $data = ['name','email','password'];
+        $title = "Login page";
+        $form_title = "Login form";
+        $data = ['email','password'];
         $request_data = $request->request->all();
         $UrlGenerator = new UrlGenerator($routes, $requestContext);
-        $UrlGenerator->generate('register-page', [], UrlGenerator::ABSOLUTE_URL);
+        $UrlGenerator->generate('login-page', [], UrlGenerator::ABSOLUTE_URL);
+
         if ($request->getMethod() == 'POST') {
             $filtered_data = load($data, $request_data);
             $validated = check_required_fields($request_data);
             if ($validated === true) {
-                if (UserModel::register($request_data)) {
-                    redirect('register-page');
+                if (UserModel::login($request_data)) {
+                    redirect('vote-page');
                 }
                 $_SESSION['success'] = 'registered';
 
@@ -45,7 +46,7 @@ class RegisterController
         // dump($UrlGenerator->generate('register-page', [], UrlGenerator::ABSOLUTE_URL));   ['parameters']
 
 
-        include_once APP_ROOT . '/public/views/register-form.php';
+        include_once APP_ROOT . '/public/views/login-form.php';
     }
 }
 

@@ -9,10 +9,12 @@ class UserModel
         global $db;
         $stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE email = ?");
         $stmt->execute([$data['email']]);
-        if ($stmt->fetchColumn() == 0) {
+        if ($stmt->fetchColumn() != 0) {
             $_SESSION['errors'] = 'this email is already taken';
             return false;
         }
+
+
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
         $stmt = $db->prepare("INSERT INTO users (name, email, password) VALUES (:name, :email, :password)");
         $stmt->execute($data);
@@ -26,7 +28,8 @@ class UserModel
         global $db;
         $stmt = $db->prepare("SELECT * FROM users WHERE email = ?");
         $stmt->execute([$data['email']]);
-        if ($row = $stmt->fetchColumn() == 0) {
+
+        if ($row = $stmt->fetch()) {
             if (!password_verify($data['password'], $row['password'])) {
                 $_SESSION['errors'] = 'email or password is wrong';
                 return false;

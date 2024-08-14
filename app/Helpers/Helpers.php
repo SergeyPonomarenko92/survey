@@ -68,5 +68,6 @@ function redirect(string $url)
 
 function is_auth():bool
 {
-    return isset($_SESSION['user']);
+
+    return isset($_SESSION['ID']);
 }

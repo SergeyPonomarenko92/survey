@@ -12,8 +12,6 @@ use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Exception\NoConfigurationException;
 
 
-//класс который позволяет прокинуть контроллер в роут.
-
 class Router
 {
     public function __invoke(RouteCollection $routes): void

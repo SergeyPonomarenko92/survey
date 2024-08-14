@@ -13,7 +13,7 @@ if (isset($_GET['do']) && $_GET['do'] == 'logout') {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-<h1><?php echo $title ?> </h1>
+<h1 class="offset-md-3"><?php echo $title ?> </h1>
     <nav class="navbar navbar-expand-lg bg-dark bg-body-tertiary" data-bs-theme="dark">
     <div class="container-fluid">
         <a class="navbar-brand " href="#">Navbar</a>
@@ -36,7 +36,8 @@ if (isset($_GET['do']) && $_GET['do'] == 'logout') {
                 <?php if (is_auth()) : ?>
                     <li class="nav-item dropdown ">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <?php echo $_SESSION['user'] ?>
+                            <?php
+                            echo 'Hello ' . $_SESSION['ID']['name'] ?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="#">Survey page</a></li>

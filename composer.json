@@ -12,7 +12,8 @@
       "ext-pdo": "*",
         "symfony/framework-bundle": "^7.0",
         "symfony/http-kernel": "^7.0",
-        "symfony/routing": "^7.0"
+        "symfony/routing": "^7.0",
+        "robmorgan/phinx": "^0.16.2"
     },
     "require-dev": {
         "symfony/var-dumper": "^7.0",

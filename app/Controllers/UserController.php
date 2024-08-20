@@ -42,7 +42,7 @@ class UserController
         // dump($UrlGenerator->generate('register-page', [], UrlGenerator::ABSOLUTE_URL));   ['parameters']
 
 
-        include_once APP_ROOT . '/public/views/register-form.php';
+        include_once APP_ROOT . '/public/views/forms/register-form.php';
     }
 
     public function login(RouteCollection $routes, ?Request $request): void
@@ -75,7 +75,7 @@ class UserController
         // dump($UrlGenerator->generate('register-page', [], UrlGenerator::ABSOLUTE_URL));   ['parameters']
 
 
-        include_once APP_ROOT . '/public/views/login-form.php';
+        include_once APP_ROOT . '/public/views/forms/login-form.php';
     }
 }
 

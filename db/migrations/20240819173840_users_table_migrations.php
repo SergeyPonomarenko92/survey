@@ -21,7 +21,7 @@ final class UsersTableMigrations extends AbstractMigration
     {
         $users = $this->table('users');
         $users->addColumn('name', 'string', ['limit' => 20])
-            ->addColumn('password', 'string', ['limit' => 20])
+            ->addColumn('password', 'string')
             ->addColumn('email', 'string', ['limit' => 100])
             ->addIndex( 'email', ['unique' => true])
             ->create();

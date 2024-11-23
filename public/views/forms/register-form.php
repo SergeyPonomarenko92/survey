@@ -4,7 +4,7 @@ require_once APP_ROOT . '/public/layout/Header.php'; ?>
 <div class="container mt-3">
     <div class="row">
         <div class="col-md-6 offset-md-3">
-            <h1> <?php echo $form_title ?> </h1>
+            <p> <?php echo $form_title ?> </p>
             <form action="" method="post">
                 <div class="form-floating mb-3">
                     <input type="text" name="name" class="form-control" id="nameInput" >

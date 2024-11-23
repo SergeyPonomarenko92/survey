@@ -10,6 +10,6 @@ $routes->add('register-page', new Route(constant('URL_SUBFOLDER') . '/register',
 $routes->add('login-page', new Route(constant('URL_SUBFOLDER') . '/login', ['controller' => 'UserController', 'method'=>'login'], []));
 $routes->add('my-account', new Route(constant('URL_SUBFOLDER') . '/account', ['controller' => 'AccountController', 'method'=>'index'], []));
 $routes->add('vote-page', new Route(constant('URL_SUBFOLDER') . '/vote-form/{id}', ['controller' => 'AccountController', 'method'=>'detail'], ['id' => '\d+']));
-$routes->add('create-vote', new Route(constant('URL_SUBFOLDER') . '/create-vote', ['controller' => 'AccountController', 'method'=>'create'], []));
+$routes->add('create-vote', new Route(constant('URL_SUBFOLDER') . '/create-vote', ['controller' => 'AccountController', 'method'=>'create_vote'], []));
 $routes->add('edite-vote', new Route(constant('URL_SUBFOLDER') . '/edit-vote/{id}', ['controller' => 'AccountController', 'method'=>'edit'], ['id' => '\d+']));
 $routes->add('destroy-vote', new Route(constant('URL_SUBFOLDER') . '/destroy-vote/{id}', ['controller' => 'AccountController', 'method'=>'destroy'], ['id' => '\d+']));

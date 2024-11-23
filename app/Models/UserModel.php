@@ -14,7 +14,6 @@ class UserModel
             return false;
         }
 
-
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
         $stmt = $db->prepare("INSERT INTO users (name, email, password) VALUES (:name, :email, :password)");
         $stmt->execute($data);

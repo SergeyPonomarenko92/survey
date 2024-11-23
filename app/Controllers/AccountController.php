@@ -2,15 +2,8 @@
 
 namespace App\Controllers;
 
-use App\Models\Answer;
-use App\Models\Question;
-use App\Models\Survey;
-use App\Models\User;
 use App\Models\UserModel;
-use App\Services\SurveyService;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Generator\UrlGenerator;
-use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\RouteCollection;
 
 class AccountController
@@ -25,7 +18,7 @@ class AccountController
     }
 
 
-    public function create(){
+    public function create_vote( RouteCollection $routes, ?Request $request){
         $title = "New Vote";
         $form_title = "Create new Vote";
         $data = ['name','email','password'];
@@ -50,7 +43,7 @@ class AccountController
         // dump($UrlGenerator->generate('register-page', [], UrlGenerator::ABSOLUTE_URL));   ['parameters']
 
 
-        include_once APP_ROOT . '/public/views/register-form.php';
+        include_once APP_ROOT . '/public/views/forms/create-new-vote.php';
     }
 
 

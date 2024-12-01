@@ -11,5 +11,6 @@ $routes->add('login-page', new Route(constant('URL_SUBFOLDER') . '/login', ['con
 $routes->add('my-account', new Route(constant('URL_SUBFOLDER') . '/account', ['controller' => 'AccountController', 'method'=>'index'], []));
 $routes->add('vote-page', new Route(constant('URL_SUBFOLDER') . '/vote-form/{id}', ['controller' => 'AccountController', 'method'=>'detail'], ['id' => '\d+']));
 $routes->add('create-vote', new Route(constant('URL_SUBFOLDER') . '/create-vote', ['controller' => 'AccountController', 'method'=>'create_vote'], []));
+$routes->add('store-vote', new Route(constant('URL_SUBFOLDER') . '/store-vote', ['controller' => 'AccountController', 'method'=>'store_vote'], []));
 $routes->add('edite-vote', new Route(constant('URL_SUBFOLDER') . '/edit-vote/{id}', ['controller' => 'AccountController', 'method'=>'edit'], ['id' => '\d+']));
 $routes->add('destroy-vote', new Route(constant('URL_SUBFOLDER') . '/destroy-vote/{id}', ['controller' => 'AccountController', 'method'=>'destroy'], ['id' => '\d+']));

@@ -28,11 +28,9 @@ class UserController
             $validated = check_required_fields($request_data);
             if ($validated === true) {
                 if (UserModel::register($request_data)) {
-
                     redirect('register-page');
                 }
                 $_SESSION['success'] = 'registered';
-
 
             }else{
                 $_SESSION['errors'] = print_alerts($validated);
@@ -61,9 +59,10 @@ class UserController
             $validated = check_required_fields($request_data);
             if ($validated === true) {
                 if (UserModel::login($request_data)) {
-                    redirect('vote-page');
+                    redirect('account');
                 }
-                $_SESSION['success'] = 'registered';
+                $_SESSION['success'] = 'you are logged';
+
             }else{
                 $_SESSION['errors'] = print_alerts($validated);
             }
